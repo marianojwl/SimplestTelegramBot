@@ -1,5 +1,9 @@
 {
-    "welcome_message": "Welcome to our website!",
+    "welcome": "👋 ¡Hola! Abrí el menú y elegí una opción por favor :)",
+    "unknown_command": "🤔 No tengo configurado ese comando.  Utilizá el menú por favor.",
+    "no_answer": "No tengo una respuesta para eso.  Si necesitás hablar con soporte, enviame <i>/soporte</i> o seleccioná la opción desde el menú :)",
+    "chat_with_support": "Hacé click aquí para hablar con soporte técnico.",
+    "not_supported": "No puedo procesar ese tipo de mensaje.  Enviame un texto por favor :)",
     "contact_us": "Contact Us",
     "about_us": "About Us"
 }
