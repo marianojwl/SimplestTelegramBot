@@ -19,37 +19,36 @@ namespace marianojwl {
         }
 
 
-private function containsHtml($inputString) {
-    $pattern = "/<[^>]*>/";
-    if (preg_match($pattern, $inputString))
-        return true; 
-    else
-        return false;
-}
+        private function containsHtml($inputString) {
+            $pattern = "/<[^>]*>/";
+            if (preg_match($pattern, $inputString))
+                return true; 
+            else
+                return false;
+        }
 
-public function sendMessage($chat_id, $message_text) {
-    $telegram_token = $this->token;
-    $parse_mode = $this->containsHtml($message_text)?'HTML':'Markdown';
+        public function sendMessage($chat_id, $message_text) {
+            $telegram_token = $this->token;
+            $parse_mode = $this->containsHtml($message_text)?'HTML':'Markdown';
 
-    $url = 'https://api.telegram.org/bot' . $telegram_token . '/sendMessage';
-    $data = [
-        'chat_id' => $chat_id,
-        'text' => $message_text,
-        'parse_mode' => $parse_mode 
-    ];
-    
-    $options = [
-        'http' => [
-            'method' => 'POST',
-            'header' => 'Content-Type: application/x-www-form-urlencoded',
-            'content' => http_build_query($data),
-        ],
-    ];
-    
-    $context = stream_context_create($options);
-    $result = file_get_contents($url, false, $context);
-    file_put_contents("log/sendMessageResult.txt", serialize($result) );
-}
-}
-
+            $url = 'https://api.telegram.org/bot' . $telegram_token . '/sendMessage';
+            $data = [
+                'chat_id' => $chat_id,
+                'text' => $message_text,
+                'parse_mode' => $parse_mode 
+            ];
+            
+            $options = [
+                'http' => [
+                    'method' => 'POST',
+                    'header' => 'Content-Type: application/x-www-form-urlencoded',
+                    'content' => http_build_query($data),
+                ],
+            ];
+            
+            $context = stream_context_create($options);
+            $result = file_get_contents($url, false, $context);
+            file_put_contents("log/sendMessageResult.txt", serialize($result) );
+        }
+    }
 }
